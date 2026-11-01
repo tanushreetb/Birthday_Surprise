@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>A Little World Called Us 👻 | Vishwa's Birthday Surprise</title>
+  <meta name="description" content="A cute, interactive Kawaii Ghost birthday surprise created with love for Vishwa.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👻</text></svg>">
+</head>
+<body>
+
+  <!-- Ambient Floating Background Particles -->
+  <div class="ambient-bg" id="ambientBg"></div>
+
+  <!-- Confetti Canvas for Celebrations -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Top Floating Navigation / Chapter Bar -->
+  <header class="top-nav-bar" id="topNavBar">
+    <div class="chapter-pill">
+      <span>👻</span>
+      <span id="chapterTitle">Chapter 1 of 5 • Secret Login</span>
+    </div>
+    <div class="nav-actions">
+      <!-- Music toggle button -->
+      <button class="icon-btn" id="musicToggleBtn" title="Toggle cozy background melody" aria-label="Toggle background music">
+        <span id="musicIcon">🎵</span>
+      </button>
+      <!-- Sound FX mute button -->
+      <button class="icon-btn" id="sfxToggleBtn" title="Toggle sound effects" aria-label="Toggle sound effects">
+        <span id="sfxIcon">🔔</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Viewport / Story Window Frame (matching reference image style) -->
+  <main class="app-viewport">
+    <div class="story-window-card" id="storyCard">
+      
+      <!-- Mac-style Titlebar -->
+      <div class="window-titlebar">
+        <div class="window-dots">
+          <div class="window-dot dot-red"></div>
+          <div class="window-dot dot-yellow"></div>
+          <div class="window-dot dot-green"></div>
+        </div>
+        <div class="window-title" id="windowTitle">
+          <span>Boo! 👻</span>
+          <span class="window-mini-heart">♡</span>
+        </div>
+        <div style="width: 45px; text-align: right;">
+          <span style="font-size: 0.95rem; opacity: 0.8;">✨</span>
+        </div>
+      </div>
+
+      <!-- Scenery inside window (twinkling stars and fluffy clouds) -->
+      <div class="window-scenery">
+        <div class="dreamy-stars">
+          <span class="sparkle-star star-1">✦</span>
+          <span class="sparkle-star star-2">★</span>
+          <span class="sparkle-star star-3">✦</span>
+          <span class="sparkle-star star-4">★</span>
+        </div>
+        <div class="fluffy-clouds"></div>
+      </div>
+
+      <!-- Interactive Stage (15 Screens) -->
+      <div class="screen-stage">
+
+        <!-- ================= PAGE 1: SECRET LOGIN ================= -->
+        <section class="screen-panel active" id="page-1" data-chapter="Chapter 1 of 5 • Secret Login" data-title="Boo! 👻 ♡">
+          <div class="screen-top-content">
+            <h1 class="screen-heading">Boo! 👻</h1>
+            <h2 class="screen-subheading">Welcome to Our Little Ghost World ♡</h2>
+            <p class="screen-text">Just for You, daaa…</p>
+            <p class="screen-subtext">A tiny space filled with memories, mischief and a special surprise just for you… ♡ 💗🫶</p>
+          </div>
+
+          <div class="ghosts-showcase" id="ghostShowcasePage1">
+            <!-- Ghost Duo with wrapped gift injected by JS -->
+          </div>
+
+          <div class="screen-bottom-content" style="width: 100%;">
+            <form id="loginForm" onsubmit="return false;" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+              <div class="input-container">
+                <span class="input-icon">🔒</span>
+                <input type="text" id="passwordInput" class="cute-input" placeholder="Enter the secret password..." autocomplete="off">
+              </div>
+              <div class="input-feedback" id="loginFeedback"></div>
+              <button type="submit" id="unlockBtn" class="btn-primary">
+                <span>Unlock pannu sikarama ♡ 🔐</span>
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 2: WRONG PASSWORD ================= -->
+        <!-- STRICT IDENTITY: FEMALE GHOST with sunglasses & pink bow holding Oops message board -->
+        <section class="screen-panel" id="page-2" data-chapter="Oops! 🙈 • Try Harder" data-title="Oops! 🙈">
+          <div class="screen-top-content">
+            <h1 class="screen-heading">Oops! 😅</h1>
+            <h2 class="screen-subheading" style="color: #ffe6aa;">That's not it! Ithu thappu, yosiii! 😂</h2>
+            <p class="screen-text" style="font-weight: 700;">Think harder...</p>
+            <p class="screen-subtext">Namma daily conversations-la irukkura edhavadhu oru special name-ah yosichu paaru, Paaa! 😉💗</p>
+          </div>
+
+          <div class="ghosts-showcase" id="ghostShowcasePage2">
+            <!-- Female ghost holding Oops board injected by JS -->
+          </div>
+
+          <div class="screen-bottom-content" style="width: 100%;">
+            <button type="button" id="tryAgainBtn" class="btn-primary">
+              <span>Try pannu kandupudi ↻</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 3: WELCOME VISHWA ================= -->
+        <section class="screen-panel" id="page-3" data-chapter="Chapter 2 of 5 • Welcome Paaa" data-title="You're In! ♡">
+          <div class="screen-top-content">
+            <h1 class="screen-heading">Wowww Paaa! Kandu pudichita polaa! 🥳💗</h1>
+            <h2 class="screen-subheading">Welcome, Paaaaa! ♡</h2>
+            <p class="screen-text">Get ready for a little birthday adventure I've planned specially for you! 🎀✨</p>
+          </div>
+
+          <div class="ghosts-showcase" id="ghostShowcasePage3">
+            <!-- Both ghosts together (Female excited, Male happy & surprised) injected by JS -->
+          </div>
+
+          <div class="screen-bottom-content" style="width: 100%;">
+            <button type="button" id="welcomeNextBtn" class="btn-primary">
+              <span>Surprise paaka polam vaaa! → 💗</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 4 & 5: BALLOON SURPRISE & MESSAGES ================= -->
+        <section class="screen-panel" id="page-4" data-chapter="Chapter 3 of 5 • Balloon Surprise" data-title="Balloon Surprise! 🎈">
+          <div class="screen-top-content">
+            <h1 class="screen-heading">Balloon Surprise! 🎈💌</h1>
+            <p class="screen-text">Pop the balloons one by one and find some hidden messages from me! ♡</p>
+            <p class="screen-subtext">Each balloon has a little something I wanted to tell you... 🥹💗</p>
+          </div>
+
+          <!-- 4 Balloons: Pink, Lavender, Baby Blue, Peach -->
+          <div class="balloons-grid">
+            <div class="balloon-item b-1 balloon-pink" data-index="0" id="balloon-0">
+              <div class="balloon-body">
+                <span class="balloon-icon">💌</span>
+              </div>
+              <div class="balloon-knot"></div>
+              <div class="balloon-string"></div>
+            </div>
+
+            <div class="balloon-item b-2 balloon-lavender" data-index="1" id="balloon-1">
+              <div class="balloon-body">
+                <span class="balloon-icon">🥹</span>
+              </div>
+              <div class="balloon-knot"></div>
+              <div class="balloon-string"></div>
+            </div>
+
+            <div class="balloon-item b-3 balloon-blue" data-index="2" id="balloon-2">
+              <div class="balloon-body">
+                <span class="balloon-icon">🎁</span>
+              </div>
+              <div class="balloon-knot"></div>
+              <div class="balloon-string"></div>
+            </div>
+
+            <div class="balloon-item b-4 balloon-peach" data-index="3" id="balloon-3">
+              <div class="balloon-body">
+                <span class="balloon-icon">⭐</span>
+              </div>
+              <div class="balloon-knot"></div>
+              <div class="balloon-string"></div>
+            </div>
+          </div>
+
+          <!-- Completion area (hidden until all 4 balloons popped) -->
+          <div id="balloonCompletionArea" style="display: none; width: 100%; flex-direction: column; align-items: center; margin-top: 6px; animation: fadeIn 0.4s ease;">
+            <p class="screen-text" style="font-weight: 700; color: #fff;">
+              Awww! Ellam paathutiya Paaa? 🥹💗<br>
+              <span style="font-size: 0.92rem; font-weight: 500; color: #ffdef0;">These are just little things I wanted you to know... 🫂❤️</span>
+            </p>
+            <button type="button" id="toCakeBtn" class="btn-primary">
+              <span>Birthday cake time! 🎂✨</span>
+            </button>
+          </div>
+
+          <div id="balloonInitialHint" style="font-size: 0.85rem; color: #ffd6ec;">
+            <span>Tap any balloon to pop! (Popped: <span id="poppedCount">0</span>/4) 🎈</span>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 6: BIRTHDAY CAKE ================= -->
+        <section class="screen-panel" id="page-6" data-chapter="Chapter 3 of 5 • Birthday Cake" data-title="Happy Birthday Paaa! 🎂">
+          <div class="screen-top-content">
+            <h1 class="screen-heading">Happy Birthday Paaa! 🎂🎉❤️</h1>
+            <p class="screen-text">Make a wish, close your eyes and blow the candles! ♡</p>
+            <p class="screen-subtext">I hope all your little wishes come true... 🥹✨</p>
+          </div>
+
+          <div class="cake-stage-wrapper" id="cakeStage">
+            <div class="cake-with-ghosts-container">
+              <!-- Left: Female Ghost cheering -->
+              <div class="cake-ghost-side" id="cakeGhostLeft"></div>
+
+              <!-- Center: Animated Birthday Cake -->
+              <svg class="birthday-cake-svg" width="180" height="135" viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Cake Plate -->
+                <ellipse cx="100" cy="130" rx="80" ry="8" fill="#e8d5f5" stroke="#cbb0e3" stroke-width="2"/>
+                <!-- Bottom Cake Tier -->
+                <rect x="35" y="85" width="130" height="42" rx="10" fill="#fff5ea" stroke="#f0cfb5" stroke-width="2"/>
+                <path d="M 35 98 C 45 106, 55 92, 65 100 C 75 108, 85 94, 95 102 C 105 110, 115 96, 125 104 C 135 112, 145 98, 155 106 C 160 102, 163 94, 165 87" stroke="#ff8dae" stroke-width="5" stroke-linecap="round" fill="none"/>
+                <!-- Top Cake Tier -->
+                <rect x="55" y="52" width="90" height="36" rx="8" fill="#ffeaf2" stroke="#f7bcd4" stroke-width="2"/>
+                <path d="M 55 62 C 65 68, 72 58, 80 65 C 88 72, 96 60, 105 67 C 114 74, 122 62, 130 68 C 138 74, 142 66, 145 60" stroke="#b17ced" stroke-width="4" stroke-linecap="round" fill="none"/>
+                <!-- Strawberries / Frosting dots -->
+                <circle cx="70" cy="52" r="5" fill="#ff4d79"/>
+                <circle cx="100" cy="50" r="6" fill="#ff4d79"/>
+                <circle cx="130" cy="52" r="5" fill="#ff4d79"/>
+
+                <!-- Candle 1 (Left) -->
+                <g id="candle1">
+                  <rect x="75" y="28" width="6" height="24" rx="2" fill="#8ed7f7" stroke="#68b5db" stroke-width="1"/>
+                  <line x1="78" y1="28" x2="78" y2="23" stroke="#555" stroke-width="1.5"/>
+                  <!-- Flame -->
+                  <path class="candle-flame-glow" d="M 78 12 C 73 17, 74 23, 78 23 C 82 23, 83 17, 78 12 Z" fill="#ffb703" stroke="#fb8500" stroke-width="1"/>
+                  <!-- Smoke -->
+                  <path class="candle-smoke" d="M 78 22 Q 74 15 79 10 Q 84 5 78 0" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </g>
+
+                <!-- Candle 2 (Center) -->
+                <g id="candle2">
+                  <rect x="97" y="22" width="6" height="28" rx="2" fill="#ffd166" stroke="#e0ad3c" stroke-width="1"/>
+                  <line x1="100" y1="22" x2="100" y2="17" stroke="#555" stroke-width="1.5"/>
+                  <!-- Flame -->
+                  <path class="candle-flame-glow" d="M 100 6 C 94 11, 95 17, 100 17 C 105 17, 106 11, 100 6 Z" fill="#ffb703" stroke="#fb8500" stroke-width="1"/>
+                  <!-- Smoke -->
+                  <path class="candle-smoke" d="M 100 16 Q 96 10 101 5 Q 106 0 100 -5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </g>
+
+                <!-- Candle 3 (Right) -->
+                <g id="candle3">
+                  <rect x="119" y="28" width="6" height="24" rx="2" fill="#ff99c8" stroke="#df72a5" stroke-width="1"/>
+                  <line x1="122" y1="28" x2="122" y2="23" stroke="#555" stroke-width="1.5"/>
+                  <!-- Flame -->
+                  <path class="candle-flame-glow" d="M 122 12 C 117 17, 118 23, 122 23 C 126 23, 127 17, 122 12 Z" fill="#ffb703" stroke="#fb8500" stroke-width="1"/>
+                  <!-- Smoke -->
+                  <path class="candle-smoke" d="M 122 22 Q 118 15 123 10 Q 128 5 122 0" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </g>
+              </svg>
+
+              <!-- Right: Male Ghost blowing candle -->
+              <div class="cake-ghost-side" id="cakeGhostRight"></div>
+            </div>
+          </div>
+
+          <div class="screen-bottom-content" style="width: 100%;">
+            <button type="button" id="blowCandleBtn" class="btn-primary">
+              <span>Blow the Candles! 🕯️💨</span>
+            </button>
+            <p class="mic-status-hint" id="micStatusText">Tip: You can also blow into your mic or click the button!</p>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 7: AFTER THE CANDLES ================= -->
+        <section class="screen-panel" id="page-7" data-chapter="Chapter 3 of 5 • Candles Blown!" data-title="Wish pannitiya? ♡">
+          <div class="screen-top-content">
+            <h1 class="screen-heading">Wish pannitiya? ♡</h1>
+            <h2 class="screen-subheading" style="color: #ff9ec4;">Good Boy! 🥹💗</h2>
+            <p class="screen-text">I hope life gives you all the happiness you deserve...</p>
+            <p class="screen-subtext">And konjam enna torture panna energy-um! 😂❤️</p>
+          </div>
+
+          <div class="ghosts-showcase" id="ghostShowcasePage7">
+            <!-- Celebrating Ghosts injected by JS -->
+          </div>
+
+          <div class="screen-bottom-content" style="width: 100%;">
+            <button type="button" id="afterCakeNextBtn" class="btn-primary">
+              <span>Next surprise! 🎁</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 8: GIFT SURPRISE INTRO ================= -->
+        <section class="screen-panel" id="page-8" data-chapter="Chapter 4 of 5 • Gift Hunt Begins" data-title="Now the real fun begins! 🎁">
+          <div class="screen-top-content">
+            <h1 class="screen-heading">Now the real fun begins! 🎁✨</h1>
+            <p class="screen-text">I've hidden special surprises for you! ♡</p>
+            <p class="screen-subtext">Are you ready to find them?<br>Konjam yosikka ready-ah iru Paaa! 😂💗</p>
+          </div>
+
+          <div class="ghosts-showcase" id="ghostShowcasePage8">
+            <!-- Ghosts injected by JS -->
+          </div>
+
+          <div class="screen-bottom-content" style="width: 100%;">
+            <div class="btn-group-row">
+              <button type="button" id="readyYesBtn" class="btn-primary" style="flex: 1;">
+                <span>Yes! 😍</span>
+              </button>
+              <button type="button" id="readyNoBtn" class="btn-secondary" style="flex: 1;">
+                <span>No? 🥺</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 9: FUNNY NO RESPONSE ================= -->
+        <!-- Triggered if Vishwa clicks No on Page 8 -->
+        <section class="screen-panel" id="page-9" data-chapter="Chapter 4 of 5 • No Escape!" data-title="Unakku escape option illa! 😂">
+          <div class="screen-top-content">
+            <h1 class="screen-heading" style="font-size: 1.6rem;">Unakku escape option illa daaa! 😂</h1>
+            <h2 class="screen-subheading" style="color: #ffe6aa;">Let's start the Gift Hunt Seriyaa! 🎁</h2>
+            <p class="screen-text">Ivalavu plan pannitu unna summa vida mudiyuma? 😏💗</p>
+          </div>
+
+          <div class="ghosts-showcase" id="ghostShowcasePage9">
+            <!-- Mischievous female ghost + confused male ghost injected by JS -->
+          </div>
+
+          <div class="screen-bottom-content" style="width: 100%;">
+            <button type="button" id="noEscapeBtn" class="btn-primary">
+              <span>Polama? → 😂🎁</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 10: GIFT HUNT: CLUE 1 ================= -->
+        <!-- STRICT RULE: Text clue card ONLY. NO gift photos/silhouettes -->
+        <section class="screen-panel" id="page-10" data-chapter="Gift Hunt • First Clue" data-title="Gift Hunt! 🔎🎁">
+          <div class="screen-top-content">
+            <h1 class="screen-heading" style="font-size: 1.6rem;">Gift Hunt! 🔎🎁</h1>
+            <p class="screen-subtext">First surprise... Let's see if you can guess it! 😏</p>
+          </div>
+
+          <!-- Beautiful Clue Memo Card -->
+          <div class="clue-memo-card">
+            <div class="washi-tape-top"></div>
+            <div class="clue-badge"><span>Clue 1 ♡</span></div>
+            <div class="clue-text-body">"Something that helps you turn thoughts into words..."</div>
+          </div>
+
+          <div class="screen-bottom-content" style="width: 100%;">
+            <form id="clue1Form" onsubmit="return false;" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+              <div class="input-container">
+                <span class="input-icon">🤔</span>
+                <input type="text" id="clue1Input" class="cute-input" placeholder="Guess pannu Paaa... 🤔" autocomplete="off">
+              </div>
+              <div class="input-feedback" id="clue1Feedback"></div>
+              <button type="submit" id="clue1SubmitBtn" class="btn-primary">
+                <span>I think I know it! ♡</span>
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 11: FIRST GIFT UNLOCKED ================= -->
+        <section class="screen-panel" id="page-11" data-chapter="Gift Hunt • Surprise Unlocked!" data-title="Correct! ♡">
+          <div class="screen-top-content">
+            <h1 class="screen-heading" style="font-size: 1.6rem;">Correct! First gift-ah seekiramaa kandu pudichita pola! 😂🎉</h1>
+            <p class="screen-text" style="color: #ffe6aa; font-weight: 700;">Ippo dhaan paakanum, remaining clues eppadi kandupidikkura nu! 😏💗</p>
+            <p class="screen-subtext">Keep going...<br>More little surprises are waiting for you... ♡ 🥹</p>
+          </div>
+
+          <div class="ghosts-showcase" id="ghostShowcasePage11">
+            <!-- Excited Female + Happy Male injected by JS -->
+          </div>
+
+          <div class="screen-bottom-content" style="width: 100%;">
+            <button type="button" id="clue1SuccessNextBtn" class="btn-primary">
+              <span>Next Surprise! ♡ 🎁</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 12: GIFT HUNT: CLUE 2 ================= -->
+        <!-- STRICT RULE: Text clue card ONLY. NO gift photos/silhouettes -->
+        <section class="screen-panel" id="page-12" data-chapter="Gift Hunt • Next Clue" data-title="Gift Hunt! 🔎🎁">
+          <div class="screen-top-content">
+            <h1 class="screen-heading" style="font-size: 1.6rem;">Gift Hunt! 🔎🎁</h1>
+            <p class="screen-subtext">Second surprise... Let's see! 😏</p>
+          </div>
+
+          <!-- Clue Card 2 -->
+          <div class="clue-memo-card">
+            <div class="washi-tape-top"></div>
+            <div class="clue-badge"><span>Clue 2 ♡</span></div>
+            <div class="clue-text-body">"You carry this wherever you go...
+
+It keeps your little essentials safe...
+
+And it's a small reminder of a special bond! ♡ 💗"</div>
+          </div>
+
+          <div class="screen-bottom-content" style="width: 100%;">
+            <form id="clue2Form" onsubmit="return false;" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+              <div class="input-container">
+                <span class="input-icon">👛</span>
+                <input type="text" id="clue2Input" class="cute-input" placeholder="Enna nu guess pannu Paaa... 🤔" autocomplete="off">
+              </div>
+              <div class="input-feedback" id="clue2Feedback"></div>
+              <div id="clue2SuccessBox" style="display: none; width: 100%; flex-direction: column; align-items: center; margin-top: 10px;">
+                <p style="font-size: 1.1rem; font-weight: 800; color: #ffdef0; margin-bottom: 10px;">
+                  Correct! You got it! 👛🎉
+                </p>
+                <button type="button" id="clue2ProceedBtn" class="btn-primary">
+                  <span>On to the next one! ♡ 🎁</span>
+                </button>
+              </div>
+              <button type="submit" id="clue2SubmitBtn" class="btn-primary">
+                <span>Check my guess! 👛💗</span>
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 13: GIFT HUNT: CLUE 3 ================= -->
+        <!-- STRICT RULE: Text clue card ONLY. NO gift photos/silhouettes -->
+        <section class="screen-panel" id="page-13" data-chapter="Gift Hunt • Final Clue" data-title="Gift Hunt! 🔎🎁">
+          <div class="screen-top-content">
+            <h1 class="screen-heading" style="font-size: 1.6rem;">Gift Hunt! 🔎🎁</h1>
+            <p class="screen-subtext">Last surprise... Idhu kandupudikka mudiyuma paapom! 😂</p>
+          </div>
+
+          <!-- Clue Card 3 -->
+          <div class="clue-memo-card">
+            <div class="washi-tape-top"></div>
+            <div class="clue-badge"><span>Clue 3 ♡</span></div>
+            <div class="clue-text-body">"Tiny things, folded with care...
+
+Each one has something I wanted you to know...
+
+A collection of little feelings, memories and wishes! ♡ 💌"</div>
+          </div>
+
+          <div class="screen-bottom-content" style="width: 100%;">
+            <form id="clue3Form" onsubmit="return false;" style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+              <div class="input-container">
+                <span class="input-icon">💌</span>
+                <input type="text" id="clue3Input" class="cute-input" placeholder="Last guess, Paaa! 🥹" autocomplete="off">
+              </div>
+              <div class="input-feedback" id="clue3Feedback"></div>
+              <div id="clue3SuccessBox" style="display: none; width: 100%; flex-direction: column; align-items: center; margin-top: 10px;">
+                <p style="font-size: 1.15rem; font-weight: 800; color: #ffdef0; margin-bottom: 6px;">
+                  Yayyyy! All three surprises found! 🥳💗
+                </p>
+                <p style="font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 12px;">
+                  Super Paaa! 🫂❤️
+                </p>
+                <button type="button" id="clue3ProceedBtn" class="btn-primary">
+                  <span>The final one! ♡ 🎉</span>
+                </button>
+              </div>
+              <button type="submit" id="clue3SubmitBtn" class="btn-primary">
+                <span>Avolodhaann..! Check pannu! ⭐💗</span>
+              </button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 14: ALL GIFTS UNLOCKED ================= -->
+        <!-- STRICT POSITIONING RULE: FEMALE GHOST ON LEFT, MALE GHOST ON RIGHT with glowing heart -->
+        <section class="screen-panel" id="page-14" data-chapter="Chapter 5 of 5 • All Gifts Unlocked" data-title="All Gifts Unlocked! ♡">
+          <div class="screen-top-content">
+            <h1 class="screen-heading">All Gifts Unlocked! 🎉💗</h1>
+            <h2 class="screen-subheading">You found all the surprises! ♡</h2>
+            <p class="screen-text">Avalodhaan nu nenachiya? 😂<br>But wait Paaa... wait! 🥹💗</p>
+            <p class="screen-subtext">There's one last thing left...<br>A little message from me, just for you... 💌❤️</p>
+          </div>
+
+          <!-- Female on LEFT, Male on RIGHT -->
+          <div class="ghosts-showcase" id="ghostShowcasePage14">
+            <!-- Duo injected by JS with strict positioning -->
+          </div>
+
+          <div class="screen-bottom-content" style="width: 100%;">
+            <button type="button" id="toFinalLetterBtn" class="btn-primary">
+              <span>Read the Final Message 💌🫂</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ================= PAGE 15: FINAL HEARTFELT LETTER ================= -->
+        <section class="screen-panel" id="page-15" data-chapter="Final Chapter • For You, Paaa ♡" data-title="One last thing, Vishwa... 💌">
+          <div class="letter-screen-container">
+            <!-- Beautiful Handwritten Letter Parchment -->
+            <article class="letter-parchment" id="letterParchment">
+              <!-- Washi tape stickers -->
+              <div class="letter-washi-tl"></div>
+              <div class="letter-washi-tr"></div>
+
+              <header>
+                <h1 class="letter-header-title">One last thing, Paaaa... ❤️👻</h1>
+              </header>
+
+              <!-- EXACT COMPLETE LETTER CONTENT INTACT -->
+              <div class="letter-body-text" id="letterBody">
+                <p>Hey Paaaa! 🥹💗</p>
+
+                <p>Enna solla, enga start panna nu theriyala daaa..... But unakku sollanum nu neraya things irukku. ❤️</p>
+
+                <p>First of all, I'm genuinely happy that life introduced me to you. 🫶</p>
+
+                <p>Honestly, idhellam ippadi aagum nu naan expect pannave illa. Just random conversations, silly jokes, endless teasing, namma nonsense talks..... Idhellam eppadi ivlo special aachu nu theriyala. But somehow, you became one of my favourite parts of everyday life. 🥹❤️</p>
+
+                <p>Unkitta pesumbodhu I can be completely myself. No overthinking, no pretending..... just me being me. Sometimes namma rendu perum pesama irundhaalum awkward-ah irukaadhu. Even silence feels comfortable when it's with the right person. 🥺💗</p>
+
+                <p>Unnoda chinna chinna things kooda enakku romba special. Un teasing, un reactions, random messages, unexpected conversations, namma sirichu pesura moments..... Sometimes I find myself smiling just by remembering those little things. 😂❤️</p>
+
+                <p>Namma rendu perukkum mattum puriyura sila feelings irukku la..... Adha eppovume words-la explain panna mudiyadhu. But I think some things are beautiful even without having to explain them every single time. ❤️🫂</p>
+
+                <p>And Paaa, one thing sollanum..... 🥺</p>
+
+                <p>Nee ellarayum pathi romba yosippa, ellarukkum help pannanum, ellarayum happy-ah paathukanum nu ninaippa. But sometimes, unnaiye nee konjam marandhuduva pola daaa.</p>
+
+                <p>Mathavanga feelings-ku importance kudukkura alavukku, un feelings-kum importance kudu Paaa. ❤️</p>
+
+                <p>Ellarukkagavum strong-ah irukkanum nu avasiyam illa. Sometimes tired-ah irundha rest edu, sad-ah irundha adha hide pannadha. Enkitta sollu.....</p>
+
+                <p>Neraiya time naanum solliten la..... Naa adhukku dhaan irukken.</p>
+
+                <p><strong>"I'm here not only to share your happiness, I'm here to share your sadness also."</strong></p>
+
+                <p>Purinjidha Paaa? 🥺🫂</p>
+
+                <p>Unakku pudichadha sei. Un happiness-um romba important. Naa unkooda irukken, naa pathukuren unna. But please take care of yourself too, Paaaa..... 🥺🫶</p>
+
+                <p>And I have four little promises for you..... 💗</p>
+
+                <p><strong>First</strong>, nee busy-ah irundhaalum, un work-la occupied-ah irundhaalum, I'll wait for you Paaa. 🕰️❤️ Don't feel pressured to reply immediately. Un time eduthuko daaa..... Whenever you're free, I'll be happy to hear from you. 🫂</p>
+
+                <p><strong>Second</strong>, unakku endha help venumnaalum, big or small, just tell me. I'll be there. Everything solve panna mudiyalainaalum, unakku support-ah irukka naan inga iruppen Paaa. 🤍🫶</p>
+
+                <p><strong>Third</strong>, unnoda kashtam, worries, overthinking, edhuva irundhaalum en kitta sollalaam. I'll listen without judging you. Everything unakkulleye vechikittu irukka vendam daaa..... Sometimes just talking about it can make things feel a little lighter. 🥹🫂</p>
+
+                <p><strong>And finally</strong>, enna nadandhaalum, nee edukkura good decisions, un dreams, un efforts ellathulayum I'll support you. Nee happy-ah irukkanum, grow aaganum, unakku pudicha life-ah build pannanum. I'll always wish the best for you, Paaa! 🌷❤️</p>
+
+                <p>These aren't just birthday promises..... These are little things I genuinely want you to know. 🥹💗</p>
+
+                <p>I don't know how you managed to become this special to me daaa. Maybe it's your nonsense, maybe it's your care, or maybe it's just the way you are..... Whatever it is, I'm glad it's you. ❤️</p>
+
+                <p>I hope namma ipdiye neraya memories create pannanum. More random talks, more silly jokes, more laughter, more unexpected little moments..... Someday indha memories ellam nenachu nammale sirikkanum. 😂💗</p>
+
+                <p>Happy Birthday, Paaaa! 🎂🎉❤️</p>
+
+                <p>You deserve all the happiness in this world. 🥹✨</p>
+
+                <p>And finally.....</p>
+
+                <p>I may not say everything every day, but you're genuinely someone very special to me, Paaa. I'm glad I have you in my little world. 🫶👻</p>
+
+                <p>Out of all the random people in this world, I'm really glad it was you. ❤️🥺</p>
+
+                <p>Stay happy, stay crazy, and never stop being you, daaa! 😂💗</p>
+
+                <p>And please..... konjam unnaiyum care panniko Paaa. You deserve the same love and care that you give everyone else. 🥺❤️🫂</p>
+
+                <p style="margin-top: 18px;">With lots and lots of love,<br>
+                <strong>Your favourite troublemaker! 😂💗</strong></p>
+              </div>
+
+              <!-- Both Ghosts Sitting Sweetly Close Together at the Bottom of the Letter 🫂💗 -->
+              <div class="letter-bottom-duo" style="margin-top: 18px; padding-top: 16px;">
+                <div class="ghosts-showcase" id="ghostShowcasePage15" style="margin: 0; min-height: 140px;">
+                  <!-- Close Duo injected by JS -->
+                </div>
+              </div>
+            </article>
+
+            <!-- Replay / Start Over button for fun (Dedicated non-clipped container) -->
+            <div class="letter-action-container">
+              <button type="button" id="replayAdventureBtn" class="btn-primary replay-btn">
+                <span>Experience Again from Start ♡ ↻</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Popup Modal for Balloon Messages -->
+  <div class="balloon-popup-overlay" id="balloonPopupOverlay">
+    <div class="balloon-popup-card">
+      <button class="balloon-popup-close" id="balloonPopupClose" aria-label="Close message">✕</button>
+      <div class="balloon-popup-ghost" id="balloonPopupGhost"></div>
+      <div class="balloon-popup-number" id="balloonPopupNumber">Message 1</div>
+      <div class="balloon-popup-msg" id="balloonPopupMsg"></div>
+      <button type="button" class="btn-primary" id="balloonPopupAckBtn" style="padding: 10px 20px; font-size: 0.95rem;">
+        <span>Aww, got it! 🥹💗</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="ghosts.js"></script>
+  <script src="audio.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
